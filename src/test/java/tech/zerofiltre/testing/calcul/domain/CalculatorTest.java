@@ -115,7 +115,7 @@ class CalculatorTest {
 		// Assert
 		assertEquals(expectResult, actualResult);
 	}
-
+/*
 	@Timeout(1)
 	@Test
 	void longCalcul_shouldComputeInLessThan1Second() {
@@ -127,7 +127,7 @@ class CalculatorTest {
 		// Assert
 		// ...
 	}
-
+*/
 	@Test
 	void listDigits_shouldReturnsTheListOfDigits_ofPositiveInteger() {
 		// GIVEN
