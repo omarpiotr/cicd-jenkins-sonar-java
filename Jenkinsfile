@@ -2,7 +2,7 @@ def CONTAINER_NAME = "calculator"
 def ENV_NAME = getEnvName(env.BRANCH_NAME)
 def CONTAINER_TAG = getTag(env.BUILD_NUMBER, env.BRANCH_NAME)
 def HTTP_PORT = getHTTPPort(env.BRANCH_NAME)
-def EMAIL_RECIPIENTS = "philippe.guemkamsimo@gmail.com"
+def EMAIL_RECIPIENTS = "omarpiotr.developer@gmail.com"
 
 
 node {
@@ -14,6 +14,7 @@ node {
         }
 
         stage('Checkout') {
+            // récupérer le code
             checkout scm
         }
 
@@ -24,6 +25,7 @@ node {
 
         stage('Sonarqube Analysis') {
             withSonarQubeEnv('SonarQubeLocalServer') {
+                // envoyer les tests tels quels à sonar car ils ont été fait précédement : skip=true et ignore=true
                 sh " mvn sonar:sonar -Dintegration-tests.skip=true -Dmaven.test.failure.ignore=true"
             }
             timeout(time: 1, unit: 'MINUTES') {
