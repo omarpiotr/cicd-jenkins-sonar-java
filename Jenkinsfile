@@ -101,14 +101,14 @@ String getEnvName(String branchName) {
     if (branchName == 'main') {
         return 'prod'
     }
-    return (branchName == 'ready') ? 'uat' : 'dev'
+    return (branchName == 'ready' || branchName.startsWith("release-") || branchName.startsWith("hotfix-")) ? 'uat' : 'dev'
 }
 
 String getHTTPPort(String branchName) {
     if (branchName == 'main') {
         return '9999'
     }
-    return (branchName == 'ready') ? '8888' : '8090'
+    return (branchName == 'ready' || branchName.startsWith("release-") || branchName.startsWith("hotfix-")) ? '8888' : '8090'
 }
 
 String getTag(String buildNumber, String branchName) {
